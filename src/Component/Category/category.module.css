@@ -27,9 +27,24 @@
   color: rgb(9, 132, 209);
 }
 .category_container {
-position: relative;
-margin-top: -10%; 
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-place-items: center;
+  position: relative;
+  margin-top: -10%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
+}
+
+@media screen and (min-width: 700px) {
+  .category_container {
+    grid-template-columns: repeat(2, 1fr)
+  }
+}@media screen and (min-width: 1056px) {
+  .category_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1400px) {
+  .category_container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

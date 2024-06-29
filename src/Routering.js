@@ -10,6 +10,7 @@ import ProductDetail from './Pages/ProductDetail/ProductDetail';
 import Auth from './Pages/Auth/Auth';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
+import protectedRoute from '../src/Component/ProtectedRoute/ProtectedRoute'
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -22,10 +23,14 @@ const Routering = () => {
         <Route path="/" element={<Landing />} />
         {/* <Route path="/auth" element={<SignIn />} /> */}
         <Route path="/payments" element={
+         <protectedRoute msg={"you must login to pay"} redirect={"/payments"}>
            <Elements stripe={stripePromise}>
            <Payment />
-         </Elements> } />
-        <Route path="/orders" element={<Orders />} />
+         </Elements> 
+         </protectedRoute>
+        }
+         />
+        <Route path="/orders" element={  <protectedRoute msg={"you must login to order"} redirect={"/orders"}> <Orders /> </protectedRoute>} />
         <Route path="/category/:categoryName" element={<Results />} />
         <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />

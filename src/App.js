@@ -4,10 +4,11 @@ import react, {useEffect, useContext} from 'react'
 import {auth} from './Utility/Firebase'
 import {Type} from './Utility/action.type'
 import { DataContext } from "./Component/DataProvider/DataProvider";
-import { useContext, useEffect } from "react";
 
-const [{user}, dispatch] = useContext(DataContext);
+
+
 function App() {
+  const [{user}, dispatch] = useContext(DataContext);
   useEffect(()=>{
     auth.onAuthStateChanged((authUser)=>{
     if(authUser){

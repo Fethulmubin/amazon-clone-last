@@ -39,7 +39,7 @@ const Payment = () => {
         url: `/payment/create?total=${total * 100}`,
       });
       console.log(response.data);
-      const clientSecret = response.data.clientSecret;
+      const clientSecret = response.data.client_secret;
       const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
         payment_method: { card: elements.getElement(CardElement) },
       });
@@ -54,11 +54,11 @@ const Payment = () => {
           amount: paymentIntent.amount,
           created: paymentIntent.created,
         });
-      dispatch({ type: Type.EMPTY_BASKET });
+      dispatch({ type: Type.EMPTY_BASKET});
       setLoading(false);
       Navigate("/orders", { state: { msg: "you have placed new Order" } });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setLoading(false);
     }
   };

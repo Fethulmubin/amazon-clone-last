@@ -47,6 +47,11 @@ case Type.SET_USER:
     ...state,
     user:action.user
   }
+  case Type.EMPTY_BASKET:
+  return {
+    ...state,
+    basket:[]
+  }
  
 
     default:
