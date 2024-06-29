@@ -5,6 +5,7 @@ const axiosInstance = axios.create({
   // depolyed version of amazon server on render.com
   // baseURL: "https://amazon-api-deploy-g121.onrender.com/",
   //local
-  baseURL: "http://localhost:5000"
+  // baseURL: "http://localhost:5000"
+  baseURL: "https://amazon-api-kyo3.onrender.com"
 });
 export { axiosInstance };
